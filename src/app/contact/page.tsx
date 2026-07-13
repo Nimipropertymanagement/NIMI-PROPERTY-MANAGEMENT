@@ -5,9 +5,8 @@ import ContactForm from "@/components/ContactForm";
 import { contactContent, siteMeta } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Contact | NIMI Property Management",
-  description:
-    "Get in touch with NIMI Property Management directly. Call 07886 859822 or send an enquiry.",
+  title: "Contact",
+  description: contactContent.subheading,
 };
 
 export default function ContactPage() {

@@ -1,9 +1,15 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/Button";
 import TrustBar from "@/components/TrustBar";
 import ServiceCard from "@/components/ServiceCard";
 import { homeHero, services, siteMeta } from "@/content/site";
+
+export const metadata: Metadata = {
+  title: homeHero.eyebrow,
+  description: homeHero.subheading,
+};
 
 export default function Home() {
   return (

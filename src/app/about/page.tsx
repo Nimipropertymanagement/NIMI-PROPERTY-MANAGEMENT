@@ -5,9 +5,8 @@ import Button from "@/components/Button";
 import { aboutContent } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "About | NIMI Property Management",
-  description:
-    "NIMI is a new, founder-led property management company built to give UK landlords direct, responsive service.",
+  title: "About",
+  description: aboutContent.intro,
 };
 
 export default function AboutPage() {

@@ -5,9 +5,8 @@ import Button from "@/components/Button";
 import { services, servicesIntro, siteMeta } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Services | NIMI Property Management",
-  description:
-    "Full residential property management for UK landlords: tenant finding, rent collection, maintenance coordination, and ongoing management.",
+  title: "Services",
+  description: servicesIntro.subheading,
 };
 
 export default function ServicesPage() {
