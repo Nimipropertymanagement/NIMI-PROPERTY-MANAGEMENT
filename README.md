@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NIMI Property Management — website
 
-## Getting Started
+Next.js (App Router) + TypeScript + Tailwind CSS marketing site for NIMI, a UK-wide residential property management company.
 
-First, run the development server:
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Editing content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Almost all page copy — headings, the trust bar, service descriptions, the About story, contact copy, nav links, phone number — lives in one place:
 
-## Learn More
+```
+src/content/site.ts
+```
 
-To learn more about Next.js, take a look at the following resources:
+Edit that file to update text without touching components or page layout. It's typed, so incorrect edits (e.g. removing a required field) will show up as TypeScript errors.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/app/            Routes: home (/), /services, /about, /contact, /api/contact
+src/components/      Reusable UI: Header, Footer, TrustBar, ServiceCard, ContactForm, etc.
+src/content/site.ts  All editable copy and structured content
+public/images/       Stock photography (see public/images/CREDITS.md)
+```
 
-## Deploy on Vercel
+## Contact form
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The form on `/contact` POSTs to `src/app/api/contact/route.ts`. Right now it validates the submission and logs it server-side (visible in your terminal / hosting provider's function logs) so nothing is lost, but it doesn't send an email yet.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Before launch, wire that route up to a real delivery method — e.g. [Resend](https://resend.com), Postmark, or a Formspree-style forwarding endpoint — and add any required API key as an environment variable in Vercel.
+
+## Images
+
+Photos in `public/images/` are placeholder stock photography of genuine UK residential streets (Unsplash License, free for commercial use — see `public/images/CREDITS.md` for sources). Swap these for licensed or commissioned photography before the site goes live for real.
+
+## Honesty guardrails
+
+The trust bar (`trustPoints`) and About page (`aboutContent`) are intentionally written to only state things that are true today — no fabricated reviews, client counts, or compliance badges. When NIMI has real accreditations, a track record, or genuine reviews, update `src/content/site.ts` directly; the `credentials` section on the About page and the trust bar are the two places designed to be extended first.
+
+## Deploying
+
+This is a standard Next.js app — deploy it to [Vercel](https://vercel.com/new) by connecting the repository, or run `vercel` from the project root under your own Vercel account. No environment variables are required until the contact form is wired up to a real email/forwarding service.
