@@ -14,6 +14,8 @@ export const siteMeta = {
     "Full property management for UK landlords, led directly by the founder. Straightforward, responsive, fully accountable.",
   phoneDisplay: "07886 859822",
   phoneHref: "tel:+447886859822",
+  emailDisplay: "info@nimipropertymanagement.com",
+  emailHref: "mailto:info@nimipropertymanagement.com",
 };
 
 export const navLinks: NavLink[] = [
